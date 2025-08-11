@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tornado Video Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #111;
+      color: #fff;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      background: #0ea5a4;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    video {
+      display: block;
+      margin: 20px auto;
+      max-width: 90%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tornado Video Player</h1>
+  <div>
+    <button id="tornado1">Tornado 1</button>
+    <button id="tornado2">Tornado 2</button>
+  </div>
+  <video id="videoPlayer" controls>
+    <source id="videoSource" src="videos/twister1996_yes.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    const videoMap = {
+      tornado1: 'videos/twister1996_yes.mp4',
+      tornado2: 'videos/twisters2024_yes.mp4'
+    };
+
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoSource = document.getElementById('videoSource');
+
+    document.getElementById('tornado1').onclick = () => changeVideo('tornado1');
+    document.getElementById('tornado2').onclick = () => changeVideo('tornado2');
+
+    function changeVideo(key) {
+      videoSource.src = videoMap[key];
+      videoPlayer.load();
+      videoPlayer.play();
+    }
+  </script>
+</body>
+</html>
